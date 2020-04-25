@@ -6,20 +6,20 @@ class File extends Component {
         $("input[type=file]").trigger("click")
     }
 
-    onUpload = (e) => {
+    onUpload = () => {
         let file = $("input[type=file]")[0].files[0]
-        let metadata = {
-            name:file.name,
-            size:file.size,
-            type:file.type,
-            formData: function(file) {
-                let formdata = new FormData()
-                formdata.append('file', file)
-                return formdata
+        if (file) {
+            let metadata = {
+                name:file.name,
+                size:file.size,
+                type:file.type,
             }
+    
+            let formData = new FormData();
+            formData.append('file', file)
+    
+            this.props.uploadFile({file:metadata, formData})
         }
-
-        this.props.uploadFile(metadata)
     }
 
     render() {

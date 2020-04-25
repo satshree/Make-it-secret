@@ -10,10 +10,6 @@
   text-align: center;
 }
 
-.anchor {
-  text-decoration: none;
-}
-
-.anchor:hover {
-  cursor: pointer;
+.table {
+  color: white;
 }

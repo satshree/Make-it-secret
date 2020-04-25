@@ -12,13 +12,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-.upload-wrap {
-  position: relative;
-}
-
-.upload-btn {
-  position: absolute;
-  left: 0;
-  opacity: 0;
-}
