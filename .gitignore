@@ -2,6 +2,9 @@
 # Created by https://www.gitignore.io/api/node,linux,django,python,windows,sublimetext,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=node,linux,django,python,windows,sublimetext,visualstudiocode
 
+Pipfile.lock 
+package-lock.json
+
 ### Migrations
 # migrations/
 
