@@ -1,0 +1,1 @@
+pyinstaller -y -F --add-data "EncryptDecrypt.py";"." --hidden-import cryptography "main.py"

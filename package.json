@@ -17,12 +17,20 @@
     "react-scripts": "3.4.1",
     "sweetalert": "^2.1.2"
   },
+  "devDependencies": {
+    "child_process": "^1.0.2",
+    "concurrently": "^5.1.0",
+    "electron": "^8.2.3",
+    "python-shell": "^1.0.8",
+    "wait-on": "^4.0.2"
+  },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently 'npm run react-start' 'wait-on http://localhost:3000/ && npm run electron-start'",
+    "react-start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start-elec": "electron ."
+    "electron-start": "electron ."
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -38,11 +46,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "concurrently": "^5.1.0",
-    "electron": "^8.2.3",
-    "python-shell": "^1.0.8",
-    "wait-on": "^4.0.2"
   }
 }

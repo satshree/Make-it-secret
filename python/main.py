@@ -16,7 +16,7 @@ for each in CURR_DIR:
         break
     else:
         CURR_DIR.pop()
-        
+
 CURR_DIR.append("Desktop")
 DESKTOP = "\\".join(CURR_DIR)
 
@@ -73,7 +73,7 @@ def decrypt(file_name, path):
         if meta == 0:
             # KEY MISMATCH
             flush_message("WRONG KEY")
-            exit(0)
+            sys.exit(0)
         else:
             # GET ORIGINAL FILE EXTENSION FROM HEADER
             ext = ".{}".format(
@@ -114,7 +114,7 @@ if __name__ == "__main__":
         decrypt(file_name, path)
     else:
         # ERROR
-        exit(0)
+        sys.exit(0)
     
     # STATUS
     flush_message("DONE")

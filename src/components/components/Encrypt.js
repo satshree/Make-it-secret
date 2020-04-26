@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Modal, Form, Button, Spinner } from 'react-bootstrap'
 import swal from '@sweetalert/with-react'
+import $ from 'jquery'
+const { ipcRenderer } = window.require('electron')
 
 class Encrypt extends Component {
     state = {
@@ -41,17 +43,40 @@ class Encrypt extends Component {
         }
     }
 
-    encrypt = () => {
-        let file = this.props.file
+    encrypt = (event) => {
+        event.preventDefault()
+        event.stopPropagation()
+
         let path = this.props.path
+        let key = $("#encKeyValue").val()
+
         this.setState({
             show:false,
             start:true
         })
 
-        console.log("ENCRYPT THIS HERE", file, path)
+        let args = [
+            key,
+            path,
+            "encrypt"
+        ]
 
-        setTimeout(this.complete, 2000)
+        ipcRenderer.invoke("START", args).then((resp) => {
+            if(resp === "ERR") {
+                swal({
+                    title:"Something went wrong.",
+                    text:"Please try again.",
+                    icon:"error"
+                })
+
+                this.setState({
+                    show:this.state.show,
+                    start:false
+                })
+            } else {
+                this.complete()
+            }
+        })
     }
     
     complete = () => {
@@ -76,19 +101,20 @@ class Encrypt extends Component {
                         <Modal.Title className="modal-title">Enter Encryption Key.</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <Form>
+                        <Form onSubmit={ this.encrypt }>
                             <Form.Group>
                                 <Form.Control type="password" id="encKeyValue" placeholder="Encryption Key" required></Form.Control>
                                 <Form.Text className="text-muted">
                                     This Key Will Encrypt and Decrypt The File You Chose.
                                 </Form.Text>
                             </Form.Group>
+                            <hr></hr>
+                            <div className="text-center">
+                                <Button type="button" variant="secondary" size="md" onClick={ this.handleClose }>Close</Button>
+                                <Button type="submit" variant="success" size="md">Encrypt</Button>
+                            </div>
                         </Form>
                     </Modal.Body>
-                    <Modal.Footer>
-                        <Button type="button" variant="secondary" size="md" onClick={ this.handleClose }>Close</Button>
-                        <Button type="button" variant="success" size="md" onClick={ this.encrypt }>Encrypt</Button>
-                    </Modal.Footer>
                 </Modal>
             </React.Fragment>
         )

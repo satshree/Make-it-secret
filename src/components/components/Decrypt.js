@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Modal, Form, Button, Spinner } from 'react-bootstrap'
 import swal from '@sweetalert/with-react'
+import $ from 'jquery'
+const { ipcRenderer } = window.require('electron')
 
 class Decrypt extends Component {
     state = {
@@ -37,17 +39,50 @@ class Decrypt extends Component {
         }
     }
 
-    decrypt = () => {
-        let file = this.props.file
+    decrypt = (event) => {
+        event.preventDefault()
+        event.stopPropagation()
+
         let path = this.props.path
+        let key = $("#decKeyValue").val()
+
         this.setState({
             show:false,
             start:true
         })
 
-        console.log("DECRYPT THIS HERE", file, path)
+        let args = [
+            key,
+            path,
+            "decrypt"
+        ]
 
-        setTimeout(this.complete, 2000)
+        ipcRenderer.invoke("START", args).then((resp) => {
+            if(resp.indexOf("ERR") !== -1) {
+                swal({
+                    title:"Something went wrong.",
+                    text:"Please try again.",
+                    icon:"error"
+                })
+
+                this.setState({
+                    show:this.state.show,
+                    start:false
+                })
+            } else if (resp.indexOf("WRONG KEY") !== -1) {
+                swal({
+                    title:"The key you entered is incorrect.",
+                    icon:"warning"
+                })
+
+                this.setState({
+                    show:this.state.show,
+                    start:false
+                })
+            } else {
+                this.complete()
+            }
+        })
     }
     
     complete = () => {
@@ -72,19 +107,19 @@ class Decrypt extends Component {
                         <Modal.Title className="modal-title">Enter Decryption Key.</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <Form>
+                        <Form onSubmit={ this.decrypt }>
                             <Form.Group>
                                 <Form.Control type="password" id="decKeyValue" placeholder="Decryption Key" required></Form.Control>
                                 <Form.Text className="text-muted">
                                     The Key Used To Encrypt The File You Chose.
                                 </Form.Text>
                             </Form.Group>
+                            <div className="text-center">
+                                <Button type="button" variant="secondary" size="md" onClick={ this.handleClose }>Close</Button>
+                                <Button type="submit" variant="info" size="md">Decrypt</Button>
+                            </div>
                         </Form>
                     </Modal.Body>
-                    <Modal.Footer>
-                        <Button type="button" variant="secondary" size="md" onClick={ this.handleClose }>Close</Button>
-                        <Button type="submit" variant="info" size="md" onClick={ this.decrypt }>Decrypt</Button>
-                    </Modal.Footer>
                 </Modal>
             </React.Fragment>
         )
