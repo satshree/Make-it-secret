@@ -13,7 +13,7 @@ class Home extends Component {
         let file = this.getFileData()
         if (file.name) {
             return (
-                <Crypto file={ file }/>
+                <Crypto file={ file } encrypt={ this.props.encrypt } />
             )
         } else {
             return (

@@ -1,11 +1,26 @@
 import React, { Component } from 'react'
+import { Table } from 'react-bootstrap'
+
 import FileInfo from './components/FileInfo'
 import Encrypt from './components/Encrypt'
-// import Decrypt from './components/Decrypt'
+import Decrypt from './components/Decrypt'
+
 
 class Crypto extends Component {
     uploadFile = (metadata) => {
         this.props.uploadFile(metadata)
+    }
+
+    getProceedBtn() {
+        if (this.props.encrypt) {
+            return (
+                <Encrypt />
+            )
+        } else {
+            return (
+                <Decrypt />
+            )
+        }
     }
 
     render() {
@@ -15,7 +30,7 @@ class Crypto extends Component {
                     <div className="text-center">
                         <strong>File "{ this.props.file.name }"</strong>
                         <br></br> <br></br>
-                        <table className="table table-centered table-striped table-bordered">
+                        <Table variant="dark" centered striped hover responsive>
                             <thead>
                                 <tr>
                                     <th>Attributes</th>
@@ -25,9 +40,9 @@ class Crypto extends Component {
                             <tbody>
                                 <FileInfo file={ this.props.file } />
                             </tbody>
-                        </table>
+                        </Table>
                         <br></br> 
-                        <Encrypt />
+                        { this.getProceedBtn() }
                     </div>
                 </div>
             </React.Fragment>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Card, Button } from 'react-bootstrap'
 import $ from 'jquery'
 
 class File extends Component {
@@ -17,29 +18,40 @@ class File extends Component {
     
             let formData = new FormData();
             formData.append('file', file)
+
+            let fileExtension = metadata.name.split(".")[1]
+
+            let encrypt = null
+            if (fileExtension === "mis") {
+                encrypt = false
+                metadata.type = "Make It Secret File"
+            } else {
+                encrypt = true
+            }
     
-            this.props.uploadFile({file:metadata, formData})
+            this.props.uploadFile({file:metadata, formData, encrypt})
         }
     }
 
     render() {
         return (
             <div className="container">
-                <div className="card" style={customCard}>
-                    <div className="card-body">
+                <Card style={customCard}>
+                    <Card.Body>
                        <div className="text-center">
-                            <button 
-                            className="btn btn-info btn-lg" 
+                            <Button 
+                            variant="info" 
+                            size="lg"
                             type="button"
                             onClick={this.triggerUpload.bind()}
-                            >Choose a file</button>
+                            >Choose a file</Button>
                             <input type="file" name="file" id="uploadFile" 
                             style={{display:'none'}}
                             onChange={this.onUpload.bind()}
                             ></input>
                        </div>
-                    </div>
-                </div>
+                    </Card.Body>
+                </Card>
             </div>
         )
     }

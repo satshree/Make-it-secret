@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom'
 import Header from './components/Header'
 import Home from './components/Home'
-import Crypto from './components/Crypto'
 
 import './App.css'
 
@@ -13,7 +12,8 @@ class App extends Component {
       size:0,
       type:null
     },
-    formData:null
+    formData:null,
+    encrypt:true
   }
 
   uploadFile = (metadata) => {
@@ -28,14 +28,8 @@ class App extends Component {
             <Route exact path="/" render={() => (
               <React.Fragment>
                 <Home uploadFile={ this.uploadFile }
-                file={ this.state.file } />
-              </React.Fragment>
-            )} />
-            <Route exact path="/crypto" render={() => (
-              <React.Fragment>
-                <Crypto uploadFile={ this.uploadFile }
-                
-                />
+                file={ this.state.file } 
+                encrypt= { this.state.encrypt } />
               </React.Fragment>
             )} />
           </BrowserRouter>
