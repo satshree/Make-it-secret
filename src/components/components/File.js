@@ -7,18 +7,22 @@ class File extends Component {
         $("input[type=file]").trigger("click")
     }
 
+    getPath(file) {
+        try {
+            return file.path
+        } catch {
+            return null
+        }
+    }
     onUpload = () => {
         let file = $("input[type=file]")[0].files[0]
         if (file) {
             let metadata = {
                 name:file.name,
                 size:file.size,
-                type:file.type,
+                type:file.type
             }
-    
-            let formData = new FormData();
-            formData.append('file', file)
-
+            
             let fileExtension = metadata.name.split(".")[1]
 
             let encrypt = null
@@ -29,7 +33,7 @@ class File extends Component {
                 encrypt = true
             }
     
-            this.props.uploadFile({file:metadata, formData, encrypt})
+            this.props.uploadFile({file:metadata, encrypt, path:this.getPath(file)})
         }
     }
 

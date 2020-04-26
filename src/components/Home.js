@@ -9,11 +9,16 @@ class Home extends Component {
         return this.props.file
     }
 
+    getFilePath() {
+        return this.props.path
+    }
+
     getDisplayComponent() {
         let file = this.getFileData()
+        let path = this.getFilePath()
         if (file.name) {
             return (
-                <Crypto file={ file } encrypt={ this.props.encrypt } />
+                <Crypto file={ file } path={ path } encrypt={ this.props.encrypt } />
             )
         } else {
             return (

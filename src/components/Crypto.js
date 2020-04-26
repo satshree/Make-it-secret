@@ -14,11 +14,11 @@ class Crypto extends Component {
     getProceedBtn() {
         if (this.props.encrypt) {
             return (
-                <Encrypt />
+                <Encrypt file={ this.props.file } path={ this.props.path } />
             )
         } else {
             return (
-                <Decrypt />
+                <Decrypt file={ this.props.file } path={ this.props.path } />
             )
         }
     }
@@ -30,7 +30,7 @@ class Crypto extends Component {
                     <div className="text-center">
                         <strong>File "{ this.props.file.name }"</strong>
                         <br></br> <br></br>
-                        <Table variant="dark" centered striped hover responsive>
+                        <Table variant="dark" centered="true" striped hover responsive>
                             <thead>
                                 <tr>
                                     <th>Attributes</th>

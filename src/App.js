@@ -12,7 +12,7 @@ class App extends Component {
       size:0,
       type:null
     },
-    formData:null,
+    path:null,
     encrypt:true
   }
 
@@ -29,6 +29,7 @@ class App extends Component {
               <React.Fragment>
                 <Home uploadFile={ this.uploadFile }
                 file={ this.state.file } 
+                path={ this.state.path }
                 encrypt= { this.state.encrypt } />
               </React.Fragment>
             )} />

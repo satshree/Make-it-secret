@@ -4,6 +4,7 @@
   "private": true,
   "main": "public/main.js",
   "dependencies": {
+    "@sweetalert/with-react": "^0.1.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
@@ -12,7 +13,6 @@
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",
-    "react-dropzone-component": "^3.2.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "sweetalert": "^2.1.2"
@@ -42,6 +42,7 @@
   "devDependencies": {
     "concurrently": "^5.1.0",
     "electron": "^8.2.3",
+    "python-shell": "^1.0.8",
     "wait-on": "^4.0.2"
   }
 }
