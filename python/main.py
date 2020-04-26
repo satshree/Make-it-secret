@@ -1,8 +1,4 @@
-"""
-Simple Encryption and Decryption python program.
-Date started = 5/29/2019
-First stable version created = 6/1/2019
-"""
+__author__ = "Satshree Shrestha"
 
 import os
 import sys
@@ -20,6 +16,7 @@ for each in CURR_DIR:
         break
     else:
         CURR_DIR.pop()
+        
 CURR_DIR.append("Desktop")
 DESKTOP = "\\".join(CURR_DIR)
 
@@ -31,12 +28,11 @@ def get_file_name(path):
     if "\\" in path:
         path_split = path.split("\\")
         file_name = path_split.pop()
-        path = "\\".join(path_split)
     elif "/" in path:
         path_split = path.split("/")
         file_name=path_split.pop()
-        path = "/".join(path_split)
     
+    # GET FILE NAME REGARDLESS OF EXTENSION
     return file_name.split(".")[0]
 
 def encrypt(file_name, path):
