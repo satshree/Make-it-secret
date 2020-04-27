@@ -118,3 +118,6 @@ if __name__ == "__main__":
     
     # STATUS
     flush_message("DONE")
+
+    # MAKE SURE SCRIPT STOPS
+    sys.exit(0)

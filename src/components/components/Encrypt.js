@@ -110,8 +110,10 @@ class Encrypt extends Component {
                             </Form.Group>
                             <hr></hr>
                             <div className="text-center">
-                                <Button type="button" variant="secondary" size="md" onClick={ this.handleClose }>Close</Button>
-                                <Button type="submit" variant="success" size="md">Encrypt</Button>
+                                <div className="btn-box">
+                                    <Button type="button" variant="secondary" size="md" onClick={ this.handleClose }>Close</Button>
+                                    <Button type="submit" variant="success" size="md">Encrypt</Button>
+                                </div>
                             </div>
                         </Form>
                     </Modal.Body>

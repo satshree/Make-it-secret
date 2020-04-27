@@ -115,8 +115,10 @@ class Decrypt extends Component {
                                 </Form.Text>
                             </Form.Group>
                             <div className="text-center">
-                                <Button type="button" variant="secondary" size="md" onClick={ this.handleClose }>Close</Button>
-                                <Button type="submit" variant="info" size="md">Decrypt</Button>
+                                <div className="btn-box">
+                                    <Button type="button" variant="secondary" size="md" onClick={ this.handleClose }>Close</Button>
+                                    <Button type="submit" variant="info" size="md">Decrypt</Button>
+                                </div>
                             </div>
                         </Form>
                     </Modal.Body>

@@ -4,6 +4,7 @@ import { Table } from 'react-bootstrap'
 import FileInfo from './components/FileInfo'
 import Encrypt from './components/Encrypt'
 import Decrypt from './components/Decrypt'
+import ForceDecrypt from './components/ForceDecrypt'
 
 
 class Crypto extends Component {
@@ -14,7 +15,10 @@ class Crypto extends Component {
     getProceedBtn() {
         if (this.props.encrypt) {
             return (
-                <Encrypt file={ this.props.file } path={ this.props.path } />
+                <div className="btn-box">
+                    <Encrypt file={ this.props.file } path={ this.props.path } />
+                    <ForceDecrypt file={ this.props.file } path={ this.props.path } />
+                </div>
             )
         } else {
             return (
@@ -42,7 +46,9 @@ class Crypto extends Component {
                             </tbody>
                         </Table>
                         <br></br> 
-                        { this.getProceedBtn() }
+                        <div className="text-center">
+                            { this.getProceedBtn() }
+                        </div>
                     </div>
                 </div>
             </React.Fragment>

@@ -32,7 +32,7 @@ function createWindow() {
 
     // win.webContents.toggleDevTools()
 
-    // win.removeMenu()
+    win.removeMenu()
 }
 
 app.on('ready', createWindow)
