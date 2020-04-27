@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Modal, Form, Button, Spinner } from 'react-bootstrap'
+import { Modal, Form, Button, Spinner, OverlayTrigger, Tooltip } from 'react-bootstrap'
 import swal from '@sweetalert/with-react'
 import $ from 'jquery'
 const { ipcRenderer } = window.require('electron')
@@ -34,7 +34,15 @@ class ForceDecrypt extends Component {
             )
         } else {
             return (
-                <Button variant="danger" size="md" onClick={ this.handleShow }> Force Decrypt </Button>
+                <React.Fragment>
+                    <OverlayTrigger placement="right" overlay={
+                        <Tooltip>
+                            Decrypt files that are not .mis file.
+                        </Tooltip>
+                    }>
+                        <Button variant="danger" size="md" onClick={ this.handleShow }> Force Decrypt </Button>
+                    </OverlayTrigger>
+                </React.Fragment>
             )
         }
     }
@@ -59,17 +67,6 @@ class ForceDecrypt extends Component {
 
         ipcRenderer.invoke("START", args).then((resp) => {
             if(resp.indexOf("ERR") !== -1) {
-                swal({
-                    title:"Something went wrong.",
-                    text:"Please try again.",
-                    icon:"error"
-                })
-
-                this.setState({
-                    show:this.state.show,
-                    start:false
-                })
-            } else if (resp.indexOf("WRONG KEY") !== -1) {
                 swal({
                     title:"Unable to decrypt.",
                     icon:"warning"

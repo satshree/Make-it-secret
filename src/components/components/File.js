@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, Button } from 'react-bootstrap'
+import { Card, Button, OverlayTrigger, Tooltip } from 'react-bootstrap'
 import $ from 'jquery'
 
 class File extends Component {
@@ -14,13 +14,22 @@ class File extends Component {
             return null
         }
     }
+
+    getFileType(file) {
+        if(file.type){
+            return file.type
+        } else {
+            return "----" 
+        }
+    }
+
     onUpload = () => {
         let file = $("input[type=file]")[0].files[0]
         if (file) {
             let metadata = {
                 name:file.name,
                 size:file.size,
-                type:file.type
+                type:this.getFileType(file)
             }
             
             let fileExtension = metadata.name.split(".")[1]
@@ -43,12 +52,18 @@ class File extends Component {
                 <Card style={customCard}>
                     <Card.Body>
                        <div className="text-center">
-                            <Button 
-                            variant="info" 
-                            size="lg"
-                            type="button"
-                            onClick={this.triggerUpload.bind()}
-                            >Choose a file</Button>
+                           <OverlayTrigger placement="right" overlay={
+                               <Tooltip>
+                                   Choose any file to Encrypt or Decrypt.
+                               </Tooltip>
+                           }>
+                                <Button 
+                                variant="info" 
+                                size="lg"
+                                type="button"
+                                onClick={this.triggerUpload.bind()}
+                                >Choose a file</Button>
+                            </OverlayTrigger>
                             <input type="file" name="file" id="uploadFile" 
                             style={{display:'none'}}
                             onChange={this.onUpload.bind()}
