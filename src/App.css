@@ -14,6 +14,10 @@
   color: black;
 }
 
+.modal-body {
+  color: black;
+}
+
 .gap {
   margin-left: 5px;
 }
@@ -21,4 +25,8 @@
 .btn-box button {
   margin-left: 5px;
   margin-right: 5px;
+}
+
+.clickable {
+  cursor: pointer;
 }

@@ -11,18 +11,19 @@ const { spawn } = require('child_process')
 function createWindow() {
     let win = new BrowserWindow({
         width:800,
-        // minwidth:800,
+        minWidth:800,
+        // maxWidth:1000,
         height:700,
-        // minheight:500,
+        minHeight:700,
+        // maxHeight:900,
+        icon:path.join(__dirname, "document_lock.ico"),
         webPreferences:{
             nodeIntegration: true
         }
     })
 
     const startUrl = "http://localhost:3000"
-    // const startUrl = process.env.DEV
-    // ? 'http://localhost:3000'
-    // : url.format({
+    // const startUrl = url.format({
     //     pathname: path.join(__dirname, '../build/index.html'),
     //     protocol: 'file:',
     //     slashes: true,

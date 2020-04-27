@@ -3,6 +3,7 @@ import React, {
 } from 'react'
 import File from './components/File'
 import Crypto from './Crypto'
+import lock from '../assets/lock.png'
 
 class Home extends Component {
     getFileData() {
@@ -23,12 +24,8 @@ class Home extends Component {
         } else {
             return (
                 <React.Fragment>
-                    <br></br>
-                    <p>
-                        Choose a file to Encrypt it.
-                        <br></br> <br></br>
-                        Choose a *.mis file (example; File.mis) to Decrypt it.
-                    </p>
+                    <br></br> <br></br>
+                    <img src={ lock } width="40%"></img>
                 </React.Fragment>
             )
         }
