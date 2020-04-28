@@ -6,6 +6,7 @@ Pipfile.lock
 package-lock.json
 __pycache__
 make-it-secret-win32-x64/
+make-it-secret-darwin-x64/
 installer/
 
 ### Migrations

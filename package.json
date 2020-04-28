@@ -15,8 +15,8 @@
     ],
     "win": {
       "icon": "src/assets/lock.png",
-      "target":"msi",
-      "publisherName":"Satshree Shrestha"
+      "target": "msi",
+      "publisherName": "Satshree Shrestha"
     }
   },
   "homepage": "./",
@@ -46,7 +46,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "electron-package": "electron-packager . --overwrite",
+    "electron-package-win": "electron-packager . make-it-secret --platform=win32 --arch=x64 --overwrite",
+    "electron-package-mac": "electron-packager . make-it-secret --platform=darwin --overwrite",
     "electron-build": "electron-builder",
     "electron-start": "electron ."
   },
