@@ -55,7 +55,7 @@ ipcMain.handle('START', async (event, args) => {
 
 function runBin(args) {
     return new Promise((resolve, reject) => {
-        let cmd = path.join(__dirname, "../bin/main.exe")
+        let cmd = path.join(__dirname, "main.exe")
         const bin = spawn(cmd, args)
     
         bin.on("error", (err) => {

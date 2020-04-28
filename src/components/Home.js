@@ -25,7 +25,7 @@ class Home extends Component {
             return (
                 <React.Fragment>
                     <br></br> <br></br>
-                    <img src={ lock } width="40%"></img>
+                    <img src={ lock } width="40%" alt="Document Lock"></img>
                 </React.Fragment>
             )
         }

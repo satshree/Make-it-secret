@@ -7,16 +7,29 @@
   "main": "public/electron.js",
   "build": {
     "appId": "electron.react",
+    "productName":"Make It Secret",
     "files": [
-      "build/**/*",
-      "node_modules/**/*",
-      "public/*",
-      "bin/*"
+      "node_modules/",
+      "build/",
+      "public/",
+      "package.json"
     ],
+    "asar":false,
     "win": {
       "icon": "src/assets/lock.png",
-      "target": "msi",
-      "publisherName": "Satshree Shrestha"
+      "publisherName": "Satshree Shrestha",
+      "target": [
+        {
+          "target":"nsis",
+          "arch":[
+            "x64",
+            "ia32"
+          ]
+        }
+      ]
+    },
+    "directories": {
+      "buildResources": "resources"
     }
   },
   "homepage": "./",
@@ -38,16 +51,16 @@
     "child_process": "^1.0.2",
     "electron": "^8.2.3",
     "electron-builder": "^22.5.1",
+    "electron-installer-windows": "^3.0.0",
     "electron-packager": "^14.2.1",
     "electron-wix-msi": "^2.2.0"
   },
   "scripts": {
     "react-start": "react-scripts start",
-    "build": "react-scripts build",
+    "react-build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "electron-package-win": "electron-packager . make-it-secret --platform=win32 --arch=x64 --overwrite",
-    "electron-package-mac": "electron-packager . make-it-secret --platform=darwin --overwrite",
+    "electron-package": "electron-packager . make-it-secret --platform=win32 --arch=x64 --overwrite",
     "electron-build": "electron-builder",
     "electron-start": "electron ."
   },
