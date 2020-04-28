@@ -7,21 +7,21 @@
   "main": "public/electron.js",
   "build": {
     "appId": "electron.react",
-    "productName":"Make It Secret",
+    "productName": "Make It Secret",
     "files": [
       "node_modules/",
       "build/",
       "public/",
       "package.json"
     ],
-    "asar":false,
+    "asar": false,
     "win": {
       "icon": "src/assets/lock.png",
       "publisherName": "Satshree Shrestha",
       "target": [
         {
-          "target":"nsis",
-          "arch":[
+          "target": "nsis",
+          "arch": [
             "x64",
             "ia32"
           ]
@@ -51,9 +51,7 @@
     "child_process": "^1.0.2",
     "electron": "^8.2.3",
     "electron-builder": "^22.5.1",
-    "electron-installer-windows": "^3.0.0",
-    "electron-packager": "^14.2.1",
-    "electron-wix-msi": "^2.2.0"
+    "electron-packager": "^14.2.1"
   },
   "scripts": {
     "react-start": "react-scripts start",
