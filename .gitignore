@@ -5,6 +5,8 @@
 Pipfile.lock 
 package-lock.json
 __pycache__
+make-it-secret-win32-x64/
+installer/
 
 ### Migrations
 # migrations/

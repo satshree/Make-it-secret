@@ -16,13 +16,13 @@ class Crypto extends Component {
         if (this.props.encrypt) {
             return (
                 <div className="btn-box">
-                    <Encrypt file={ this.props.file } path={ this.props.path } />
-                    <ForceDecrypt file={ this.props.file } path={ this.props.path } />
+                    <Encrypt file={ this.props.file } path={ this.props.path } resetState={ this.props.resetState } />
+                    <ForceDecrypt file={ this.props.file } path={ this.props.path } resetState={ this.props.resetState } />
                 </div>
             )
         } else {
             return (
-                <Decrypt file={ this.props.file } path={ this.props.path } />
+                <Decrypt file={ this.props.file } path={ this.props.path } resetState={ this.props.resetState } />
             )
         }
     }

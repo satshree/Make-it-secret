@@ -19,7 +19,7 @@ class Home extends Component {
         let path = this.getFilePath()
         if (file.name) {
             return (
-                <Crypto file={ file } path={ path } encrypt={ this.props.encrypt } />
+                <Crypto file={ file } path={ path } encrypt={ this.props.encrypt } resetState={ this.props.resetState } />
             )
         } else {
             return (

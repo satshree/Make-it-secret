@@ -40,10 +40,10 @@ class Header extends Component {
                             onClick={ async () => {
                                 const { shell } = window.require('electron')
                                 await shell.openExternal("https://github.com/satshree/Make-it-secret")
-                            } }>Checkout code on GitHub</em>
+                            } }>Check GitHub repository</em>
                         </div>
                         <hr></hr>
-                        <p align="justify">This app will <strong>Encrypt</strong> any file you choose with strong <strong>AES Encryption Algorithm</strong> into Make It Secret file (*.mis).</p>
+                        <p align="justify">This app will <strong>Encrypt</strong> any file you choose with strong <strong>AES (American Encryption Standard) Encryption Algorithm</strong> into Make It Secret file (*.mis).</p>
                         <br></br>
                         <h5 align="justify">Make sure to keep the key safe used for encryption. Without the key, the encrypted file cannot be decrypted!</h5>
                     </Modal.Body>

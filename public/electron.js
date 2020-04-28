@@ -17,26 +17,30 @@ function createWindow() {
         minHeight:700,
         // maxHeight:900,
         icon:path.join(__dirname, "document_lock.ico"),
+        show:false,
         webPreferences:{
             nodeIntegration: true
         }
     })
 
-    const startUrl = "http://localhost:3000"
-    // const startUrl = url.format({
-    //     pathname: path.join(__dirname, '../build/index.html'),
-    //     protocol: 'file:',
-    //     slashes: true,
-    // });
+    // const startUrl = "http://localhost:3000"
+    const startUrl = url.format({
+        pathname: path.join(__dirname, '../', 'build', 'index.html'),
+        protocol: 'file:',
+        slashes: false,
+    });
     
+    console.log(startUrl)
     win.loadURL(startUrl)
 
     // win.webContents.toggleDevTools()
 
     win.removeMenu()
+    win.once('ready-to-show', () => win.show())
 }
 
 app.on('ready', createWindow)
+
 
 app.on('window-all-closed', () => {
     app.quit()

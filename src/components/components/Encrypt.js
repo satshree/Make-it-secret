@@ -89,7 +89,15 @@ class Encrypt extends Component {
             title:"File Encrypted!",
             text:"Encrypted file is saved on your Desktop.",
             icon:"success"
-        }).then(() => window.location.href="/")
+        }).then(() => this.props.resetState({
+            file:{
+              name:null,
+              size:0,
+              type:null
+            },
+            path:null,
+            encrypt:true
+          }))
     }
 
     render() {
