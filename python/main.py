@@ -2,7 +2,6 @@ __author__ = "Satshree Shrestha"
 
 import os
 import sys
-import re
 from base64 import b64encode, b64decode
 from EncryptDecrypt import generatekey, encipher, decipher
 from datetime import datetime
@@ -10,15 +9,7 @@ from datetime import datetime
 SEPARATOR = "\n-----\n"
 
 # GET DESKTOP DIRECTORY
-CURR_DIR = os.getcwd().split("\\")
-for each in CURR_DIR:
-    if each is "Desktop":
-        break
-    else:
-        CURR_DIR.pop()
-
-CURR_DIR.append("Desktop")
-DESKTOP = "\\".join(CURR_DIR)
+DESKTOP = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop') 
 
 def flush_message(message):
     print(message)
