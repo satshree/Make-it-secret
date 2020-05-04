@@ -93,7 +93,7 @@ class Decrypt extends Component {
 
         swal({
             title:"File Decrypted!",
-            text:"Decrypted file is saved on your Desktop.",
+            text:"Your file is decrypted back to its original form.",
             icon:"success"
         }).then(() => this.props.resetState({
             file:{

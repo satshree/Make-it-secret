@@ -87,7 +87,7 @@ class Encrypt extends Component {
 
         swal({
             title:"File Encrypted!",
-            text:"Encrypted file is saved on your Desktop.",
+            text:"Your file is now inaccessible.",
             icon:"success"
         }).then(() => this.props.resetState({
             file:{

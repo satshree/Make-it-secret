@@ -45,7 +45,7 @@ class Header extends Component {
                         <hr></hr>
                         <p align="justify">This app will <strong>Encrypt</strong> any file you choose with strong <strong>AES (American Encryption Standard) Encryption Algorithm</strong> into Make It Secret file (*.mis).</p>
                         <br></br>
-                        <h5 align="justify">Make sure to keep the key safe used for encryption. Without the key, the encrypted file cannot be decrypted!</h5>
+                        <strong align="justify">Make sure to keep the key safe used for encryption. Without the key, the encrypted file cannot be decrypted!</strong>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="primary" onClick={ this.handleClose }>

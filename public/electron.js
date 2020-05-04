@@ -30,7 +30,7 @@ function createWindow() {
         slashes: false,
     });
     
-    console.log(startUrl)
+    // console.log(startUrl)
     win.loadURL(startUrl)
 
     // win.webContents.toggleDevTools()
